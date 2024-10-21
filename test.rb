@@ -2,11 +2,12 @@ require 'watir'
 require 'win32ole'
 
 # Khởi tạo browser
-browser = Watir::Browser.new :edge
+# browser = Watir::Browser.new :edge # Mở trình duyệt Edge
+browser = Watir::Browser.new # Mở trình duyệt mặc định (Chrome)
 
 # Kết nối đến Excel
 excel = WIN32OLE.new('Excel.Application')
-workbook = excel.Workbooks.Open('C:\watir\WatirTestData.xlsx')
+workbook = excel.Workbooks.Open('F:\Year04\HK1\QA_and_AppTesting\_Watir_Testing\WatirTestData.xlsx')
 worksheet = workbook.Worksheets('Sheet1')
 
 # Mở trang web
@@ -29,7 +30,7 @@ row_count = worksheet.UsedRange.Rows.Count
   browser.button(xpath: '/html/body/div/button').click
 
   # Tạm dừng 2 giây để chờ kết quả xử lý
-  sleep(2)
+  sleep(1)
 
   # Lấy kết quả và ghi lại vào Excel
   worksheet.Cells(row, 'C').value = browser.div(id: 'emailResult').text
