@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Watir</title>
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border 0.3s;
+        }
+
+        input:focus {
+            border: 2px solid #4CAF50;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .valid {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .invalid {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+
+        <label for="email">Enter Email:</label>
+        <input type="text" id="email" placeholder="example@gmail.com">
+
+        <label for="password">Enter Password:</label>
+        <input type="password" id="password" placeholder="Type password here">
+
+        <button onclick="validateInputs()">Login</button>
+
+        <div id="emailResult" class="result"></div>
+        <div id="passwordResult" class="result"></div>     
+        <div id="loginResult" class="result"></div>     
+    </div>
+
+    <script>
+        // Regex patterns for validation
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        const testEmail = 'test@fit.iuh.edu.vn'
+        const testPassword = 'Test@1234'
+
+        function validateInputs() {
+            const emailInput = document.getElementById('email').value;
+            const passwordInput = document.getElementById('password').value;
+
+            const emailResult = document.getElementById('emailResult');
+            const passwordResult = document.getElementById('passwordResult');
+            const loginResult = document.getElementById('loginResult');
+
+            // Validate email
+            if (emailRegex.test(emailInput)) {
+                emailResult.textContent = 'Valid Email!';
+                emailResult.className = 'result valid';
+            } else {
+                emailResult.textContent = 'Invalid Email!';
+                emailResult.className = 'result invalid';
+            }
+
+            // Validate password
+            if (passwordRegex.test(passwordInput)) {
+                if (passwordInput === testPassword && emailInput === testEmail) {
+                    alert('Login successful!');
+                    passwordResult.textContent = 'Password valid!';
+                    passwordResult.className = 'result valid';
+
+                    loginResult.textContent = 'Login successful!';
+                    loginResult.className = 'result valid';
+                } else {
+                    passwordResult.textContent = 'Password valid!';
+                    passwordResult.className = 'result valid';
+
+                    loginResult.textContent = 'Email or Password is incorrect!';
+                    loginResult.className = 'result invalid';
+                }
+            } else {
+                passwordResult.textContent = 'Invalid Password!';
+                passwordResult.className = 'result invalid';
+            }
+        }
+    </script>
+</body>
+</html>
