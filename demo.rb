@@ -2,7 +2,7 @@ require 'watir'
 require 'win32ole'
 
 # Khởi tạo browser
-browser = Watir::Browser.new :edge
+browser = Watir::Browser.new
 
 #Kết nối đến Excel
 excel = WIN32OLE.connect('C:\watir\WatirTestData.xlsx')

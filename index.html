@@ -112,7 +112,7 @@
     <script>
         // Regex patterns for validation
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const passwordRegex = /^[A-Za-z](?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/;
+        const passwordRegex = /^[A-Z][A-Za-z\d@$!%*?&]{7,}$/;
 
         const testEmail = 'test@fit.iuh.edu.vn'
         const testPassword = 'Test@1234'
@@ -152,6 +152,9 @@
             } else {
                 passwordResult.textContent = 'Invalid Password!';
                 passwordResult.className = 'result invalid';
+                loginResult.textContent = 'Email or Password is incorrect!';
+                loginResult.className = 'result invalid';
+
             }
         }
     </script>
