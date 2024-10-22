@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +42,8 @@
             font-size: 24px;
         }
 
-        input[type="text"], input[type="password"] {
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -89,6 +91,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Login</h1>
@@ -102,14 +105,14 @@
         <button onclick="validateInputs()">Login</button>
 
         <div id="emailResult" class="result"></div>
-        <div id="passwordResult" class="result"></div>     
-        <div id="loginResult" class="result"></div>     
+        <div id="passwordResult" class="result"></div>
+        <div id="loginResult" class="result"></div>
     </div>
 
     <script>
         // Regex patterns for validation
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^[A-Za-z](?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/;
 
         const testEmail = 'test@fit.iuh.edu.vn'
         const testPassword = 'Test@1234'
@@ -134,7 +137,6 @@
             // Validate password
             if (passwordRegex.test(passwordInput)) {
                 if (passwordInput === testPassword && emailInput === testEmail) {
-                    alert('Login successful!');
                     passwordResult.textContent = 'Password valid!';
                     passwordResult.className = 'result valid';
 
@@ -154,4 +156,5 @@
         }
     </script>
 </body>
+
 </html>
